@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="apis.js"></script>
+    <title>Submit Form</title>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        // Set initial values
+        const initialValues = {
+          SapID: "52110368",
+          Title: "PAREME",
+          ResourceEmail: "a.parameshwaran@hcltech.om",
+          Week1: "2",
+          Week2: "47",
+          Week3: "43",
+          Week4: "12",
+          Month: "june",
+          Year: "2024",
+          ResourceRole: "Onshore",
+          ApprovalStatus: "Yes",
+        };
+
+        document.getElementById("resourceEmail").value =
+          initialValues.ResourceEmail;
+        document.getElementById("month").value = initialValues.Month;
+        document.getElementById("Title").value = initialValues.Title;
+        document.getElementById("SapID").value = initialValues.SapID;
+        document.getElementById("year").value = initialValues.Year;
+        document.getElementById("Week1").value = initialValues.Week1;
+        document.getElementById("Week2").value = initialValues.Week2;
+        document.getElementById("Week3").value = initialValues.Week3;
+        document.getElementById("Week4").value = initialValues.Week4;
+        document.getElementById("ResourceRole").value =
+          initialValues.ResourceRole;
+        console.log("karthik", typeof initialValues.Month);
+      });
+
+      function submitForm(event) {
+        event.preventDefault();
+        const form = document.getElementById("workHoursForm");
+
+        const data = {
+          SapID: form.SapID.value,
+          ResourceEmail: form.ResourceEmail.value,
+          Month: form.month.value,
+          Year: form.year.value,
+          Week1: form.Week1.value,
+          Week2: form.Week2.value,
+          Week3: form.Week3.value,
+          Week4: form.Week4.value,
+          ResourceRole: form.ResourceRole.value,
+        };
+
+        fetch("YOUR_API_ENDPOINT_HERE", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <form id="workHoursForm" onsubmit="submitForm(event)">
+      <label for="Title">Resource Name:</label>
+      <input type="text" id="Title" name="Title" required /><br /><br />
+
+      <label for="SapID">Resource Sap Id:</label>
+      <input type="text" id="SapID" name="SapID" required /><br /><br />
+
+      <label for="Eur/Hour">Resource Sap Id:</label>
+      <input type="text" id="Eur/Hour" name="Eur/Hour" required /><br /><br />
+
+      <label for="resourceEmail">Resource Email:</label>
+      <input
+        type="email"
+        id="resourceEmail"
+        name="resourceEmail"
+        required
+      /><br /><br />
+
+      <label for="month">Month:</label>
+      <input type="text" id="month" name="month" required /><br /><br />
+
+      <label for="year">Year:</label>
+      <input type="number" id="year" name="year" required /><br /><br />
+
+      <label for="Week1">Week1 Work Hours:</label>
+      <input type="number" id="Week1" name="Week1" required /><br /><br />
+
+      <label for="Week2">Week2 Work Hours:</label>
+      <input type="number" id="Week2" name="Week2" required /><br /><br />
+
+      <label for="Week3">Week3 Work Hours:</label>
+      <input type="number" id="Week3" name="Week3" required /><br /><br />
+
+      <label for="Week4">Week4 Work Hours:</label>
+      <input type="number" id="Week4" name="Week4" required /><br /><br />
+
+      <label for="ResourceRole">Select Shore:</label>
+      <select id="ResourceRole" name="ResourceRole" required>
+        <option value="Onshore">OnShore</option>
+        <option value="OffShore">OffShore</option></select
+      ><br /><br />
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
