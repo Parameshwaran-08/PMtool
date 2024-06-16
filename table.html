@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resource Management Table</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .btn-group button {
+        margin: 4px;
+        padding: 8px 16px;
+        cursor: pointer;
+      }
+      .btn-group button:hover {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tableWrap"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Resource Name</th>
+          <th>Resource SAP ID</th>
+          <th>EUR/Hour</th>
+          <th>Budget Hours</th>
+          <th>Actual Hours</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+
+    <script src="apis.js"></script>
+  </body>
+</html>
