@@ -8,7 +8,6 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
-        // Set initial values
         const initialValues = {
           SapID: "52110368",
           Title: "PAREME",
@@ -17,13 +16,14 @@
           Week2: "47",
           Week3: "43",
           Week4: "12",
-          Month: "june",
+          Month: "June",
           Year: "2024",
           ResourceRole: "Onshore",
           ApprovalStatus: "Yes",
+          Eur_x002f_Hour: "23",
         };
 
-        document.getElementById("resourceEmail").value =
+        document.getElementById("ResourceEmail").value =
           initialValues.ResourceEmail;
         document.getElementById("month").value = initialValues.Month;
         document.getElementById("Title").value = initialValues.Title;
@@ -33,6 +33,7 @@
         document.getElementById("Week2").value = initialValues.Week2;
         document.getElementById("Week3").value = initialValues.Week3;
         document.getElementById("Week4").value = initialValues.Week4;
+        document.getElementById("EurHour").value = initialValues.Eur_x002f_Hour;
         document.getElementById("ResourceRole").value =
           initialValues.ResourceRole;
         console.log("karthik", typeof initialValues.Month);
@@ -43,6 +44,7 @@
         const form = document.getElementById("workHoursForm");
 
         const data = {
+          Title: form.Title.value,
           SapID: form.SapID.value,
           ResourceEmail: form.ResourceEmail.value,
           Month: form.month.value,
@@ -52,15 +54,21 @@
           Week3: form.Week3.value,
           Week4: form.Week4.value,
           ResourceRole: form.ResourceRole.value,
+          Eur_x002f_Hour: form.EurHour.value,
         };
 
-        fetch("YOUR_API_ENDPOINT_HERE", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
+        fetch(
+          "https://crm581985.sharepoint.com/sites/ProjectManagerTool/_api/web/lists/getbytitle('effort_tracking')/items",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization:
+                "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCIsImtpZCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvY3JtNTgxOTg1LnNoYXJlcG9pbnQuY29tQGE4MTk0MjdiLTg2ZDEtNDM2Ni05MjJiLTQxNTBmYjM4YWRiNCIsImlzcyI6IjAwMDAwMDAxLTAwMDAtMDAwMC1jMDAwLTAwMDAwMDAwMDAwMEBhODE5NDI3Yi04NmQxLTQzNjYtOTIyYi00MTUwZmIzOGFkYjQiLCJpYXQiOjE3MTg0OTY2NzMsIm5iZiI6MTcxODQ5NjY3MywiZXhwIjoxNzE4NTgzMzczLCJpZGVudGl0eXByb3ZpZGVyIjoiMDAwMDAwMDEtMDAwMC0wMDAwLWMwMDAtMDAwMDAwMDAwMDAwQGE4MTk0MjdiLTg2ZDEtNDM2Ni05MjJiLTQxNTBmYjM4YWRiNCIsIm5hbWVpZCI6ImNjNjFiZDcyLTE0MTMtNDIwNi1iODcxLTM0OWMyODk4NGRjNEBhODE5NDI3Yi04NmQxLTQzNjYtOTIyYi00MTUwZmIzOGFkYjQiLCJvaWQiOiI3OWRjYjlmYy00NWY2LTQxMWMtYWRmNS1jZWVlNTBjNTgzMjciLCJzdWIiOiI3OWRjYjlmYy00NWY2LTQxMWMtYWRmNS1jZWVlNTBjNTgzMjciLCJ0cnVzdGVkZm9yZGVsZWdhdGlvbiI6ImZhbHNlIn0.T1lx6K-I725p0J9QOdi2hoyMowqwryBShCQ07komj-tARj7l_SQzoIRwQd4oLbaPHpZWaiFbRzlKh5gccyhn2mcA6gh_V1q-fKZhofDCDChaajjUaMbCXeDeQd752eWjgHVrJAB9ll9z96wE7TucPYUsqwM6ZzMfB5lVEOpWdmodExEMOQ93iJYpOeP98OZE2iTmMU-hgvudoEBtQztoJaIc3oO296ZHxgXUKP3zk_-rRn1yp1-3VmRKBI43tmWmNvJ7BqljgK61wkNbhw8RM86hgOMxVxBhxuMHSrYMiCbXSMLHKUUwpwkDM5058pi0C3k9NTGZgZ7I_-rl6b7QCQ",
+            },
+            body: JSON.stringify(data),
+          }
+        )
           .then((response) => response.json())
           .then((data) => {
             console.log("Success:", data);
@@ -79,22 +87,41 @@
       <label for="SapID">Resource Sap Id:</label>
       <input type="text" id="SapID" name="SapID" required /><br /><br />
 
-      <label for="Eur/Hour">Resource Sap Id:</label>
-      <input type="text" id="Eur/Hour" name="Eur/Hour" required /><br /><br />
+      <label for="EurHour">Resource Eur/Hour:</label>
+      <input type="text" id="EurHour" name="EurHour" required /><br /><br />
 
       <label for="resourceEmail">Resource Email:</label>
       <input
         type="email"
-        id="resourceEmail"
-        name="resourceEmail"
+        id="ResourceEmail"
+        name="ResourceEmail"
         required
       /><br /><br />
 
       <label for="month">Month:</label>
-      <input type="text" id="month" name="month" required /><br /><br />
+      <select id="month" name="month" required>
+        <option value="">Select Month</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option></select
+      ><br /><br />
 
       <label for="year">Year:</label>
-      <input type="number" id="year" name="year" required /><br /><br />
+      <select id="year" name="year" required>
+        <option value="">Select Year</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option></select
+      ><br /><br />
 
       <label for="Week1">Week1 Work Hours:</label>
       <input type="number" id="Week1" name="Week1" required /><br /><br />
