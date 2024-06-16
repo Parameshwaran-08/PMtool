@@ -34,9 +34,14 @@ const getListItems = async () => {
 };
 
 document.addEventListener("DOMContentLoaded", (event) => {
+  console.log("karthik fire >>", event);
   getListItems().then(function (response) {
     console.log("response>>>>>>   ", response);
-    document.getElementById("tableWrap").append();
+    response.forEach((element) => {
+      document
+        .getElementById("table-body")
+        .appendChild("<tr>{element.ResourceEmail}</tr>");
+    });
   });
 });
 
