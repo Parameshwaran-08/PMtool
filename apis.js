@@ -44,12 +44,10 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   // <th>Actions</th>
 
   data.forEach((element) => {
-    const totalTimePerMonth =
-      (element.week1 ? Number(element.week1) : 0) +
-      (element.week2 ? Number(element.week2) : 0) +
-      (element.week3 ? Number(element.week3) : 0) +
-      (element.week4 ? Number(element.week4) : 0);
-
+    let totalTimePerMonth = element.week1 ? Number(element.week1) : 0;
+    if (element.week2) totalTimePerMonth += Number(element.week2);
+    if (element.week3) totalTimePerMonth += Number(element.week3);
+    if (element.week4) totalTimePerMonth += Number(element.week4);
     const table = document
       .getElementById("tab")
       .getElementsByTagName("tbody")[0];
