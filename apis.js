@@ -45,14 +45,14 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 
   data.forEach((element) => {
     const totalTimePerMonth = element.week1
-    ? Number(element.week1)
-    : 0 + element.week2
-    ? Number(element.week2)
-    : 0 + element.week3
-    ? Number(element.week3)
-    : 0 + element.week4
-    ? Number(element.week4)
-    : 0;
+      ? Number(element.week1)
+      : 0 + element.week2
+      ? Number(element.week2)
+      : 0 + element.week3
+      ? Number(element.week3)
+      : 0 + element.week4
+      ? Number(element.week4)
+      : 0;
     const table = document
       .getElementById("tab")
       .getElementsByTagName("tbody")[0];
@@ -84,6 +84,21 @@ const deleteListItem = async (id) => {
         Authorization: "update with real auth token",
         "If-Match": "*",
       },
+    }
+  );
+};
+const updateListItem = async (id, body) => {
+  const response = await fetch(
+    `https://crm581985.sharepoint.com/sites/ProjectManagerTool/_api/web/lists/getbytitle('effort_tracking')/items/getbyid('${id}')`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json;odata=verbose",
+        "Content-Type": "application/json;odata=verbose",
+        Authorization: "update with real auth token",
+        "If-Match": "*",
+      },
+      body: body,
     }
   );
 };
