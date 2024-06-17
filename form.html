@@ -5,7 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="apis.js"></script>
     <title>Submit Form</title>
+  </head>
+  <body>
+    <form id="workHoursForm" onsubmit="submitForm(event)">
+      <label for="Title">Resource Name:</label>
+      <input type="text" id="Title" name="Title" required /><br /><br />
 
+      <label for="SapID">Resource Sap Id:</label>
+      <input type="text" id="SapID" name="SapID" required /><br /><br />
+
+      <label for="Eur/Hour">Eur/Hour:</label>
+      <input type="text" id="Eur/Hour" name="Eur/Hour" required /><br /><br />
+
+      <label for="resourceEmail">Resource Email:</label>
+      <input
+        type="email"
+        id="resourceEmail"
+        name="resourceEmail"
+        required
+      /><br /><br />
+
+      <label for="month">Month:</label>
+      <input type="text" id="month" name="month" required /><br /><br />
+
+      <label for="year">Year:</label>
+      <input type="number" id="year" name="year" required /><br /><br />
+
+      <label for="Week1">Week1 Work Hours:</label>
+      <input type="number" id="Week1" name="Week1" required /><br /><br />
+
+      <label for="Week2">Week2 Work Hours:</label>
+      <input type="number" id="Week2" name="Week2" required /><br /><br />
+
+      <label for="Week3">Week3 Work Hours:</label>
+      <input type="number" id="Week3" name="Week3" required /><br /><br />
+
+      <label for="Week4">Week4 Work Hours:</label>
+      <input type="number" id="Week4" name="Week4" required /><br /><br />
+
+      <label for="ResourceRole">Resource Role :</label>
+      <select id="ResourceRole" name="ResourceRole" required>
+        <option value="Onshore">OnShore</option>
+        <option value="OffShore">OffShore</option></select
+      ><br /><br />
+
+      <button type="submit">Submit</button>
+    </form>
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
         // Set initial values
@@ -70,51 +115,5 @@
           });
       }
     </script>
-  </head>
-  <body>
-    <form id="workHoursForm" onsubmit="submitForm(event)">
-      <label for="Title">Resource Name:</label>
-      <input type="text" id="Title" name="Title" required /><br /><br />
-
-      <label for="SapID">Resource Sap Id:</label>
-      <input type="text" id="SapID" name="SapID" required /><br /><br />
-
-      <label for="Eur/Hour">Resource Sap Id:</label>
-      <input type="text" id="Eur/Hour" name="Eur/Hour" required /><br /><br />
-
-      <label for="resourceEmail">Resource Email:</label>
-      <input
-        type="email"
-        id="resourceEmail"
-        name="resourceEmail"
-        required
-      /><br /><br />
-
-      <label for="month">Month:</label>
-      <input type="text" id="month" name="month" required /><br /><br />
-
-      <label for="year">Year:</label>
-      <input type="number" id="year" name="year" required /><br /><br />
-
-      <label for="Week1">Week1 Work Hours:</label>
-      <input type="number" id="Week1" name="Week1" required /><br /><br />
-
-      <label for="Week2">Week2 Work Hours:</label>
-      <input type="number" id="Week2" name="Week2" required /><br /><br />
-
-      <label for="Week3">Week3 Work Hours:</label>
-      <input type="number" id="Week3" name="Week3" required /><br /><br />
-
-      <label for="Week4">Week4 Work Hours:</label>
-      <input type="number" id="Week4" name="Week4" required /><br /><br />
-
-      <label for="ResourceRole">Select Shore:</label>
-      <select id="ResourceRole" name="ResourceRole" required>
-        <option value="Onshore">OnShore</option>
-        <option value="OffShore">OffShore</option></select
-      ><br /><br />
-
-      <button type="submit">Submit</button>
-    </form>
   </body>
 </html>

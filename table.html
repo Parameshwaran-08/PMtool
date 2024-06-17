@@ -1,52 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resource Management Table</title>
-    <style>
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-      table,
-      th,
-      td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: center;
-      }
-      th {
-        background-color: #f2f2f2;
-      }
-      .btn-group button {
-        margin: 4px;
-        padding: 8px 16px;
-        cursor: pointer;
-      }
-      .btn-group button:hover {
-        background-color: #ddd;
-      }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   </head>
-  <body>
-    <div id="tableWrap"></div>
-    <table id="tab">
-      <thead>
-        <tr>
-          <th>Resource Name</th>
-          <th>Resource SAP ID</th>
-          <th>EUR/Hour</th>
-          <th>Budget Hours</th>
-          <th>Actual Hours</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody >
-        
-      </tbody>
-    </table>
 
+  <body>
+    <div id="tableWrap" class="table-container">
+      <h2>Submission History</h2>
+      <table id="tab" class="styled-table">
+        <thead>
+          <tr>
+            <th>Resource Name</th>
+            <th>Resource SAP ID</th>
+            <th>Resource Role</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Budget Hours</th>
+            <th>Actual Hours</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody >
+          
+        </tbody>
+      </table>
+    </div>
     <script src="apis.js"></script>
   </body>
 </html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <form action="#">
+        <div class="container">
+            <div class="child" id="registration"><p>Efforts Register - Monthly Update</p></div>
+
+            <div class="child" id="input">
+                <div class="grid-items">
+                    <label for="fullname">Resource Name<span aria-label="required">*</span></label><br>
+                    <input type="text" id="fullname" name="Full Name" placeholder="Enter your fullname"><br>
+                </div>
+
+                <div class="grid-items">
+                    <label for="username">Resource SAP ID<span aria-label="required">*</span></label><br>
+                    <input type="text" id="Sapid" placeholder="Enter your Sap ID"><br>
+                </div>
+
+                <div class="grid-items">
+                    <label for="E-mail">Resource HCL Email<span aria-label="required">*</span></label><br>
+                    <input type="email" id="email" name="E-mail" placeholder="Enter your HCL Email"><br>
+                </div>
+
+                <div class="grid-items">
+                    <label for="Euros">Euro/Hour<span aria-label="required">*</span></label><br>
+                    <input type="text" placeholder="Enter the euro per hour work"><br>
+                </div>
+
+                <div class="grid-items">
+                    <label for="month">Month (In words)<span aria-label="required">*</span></label><br>
+                    <input type="text" placeholder="Enter the current month"><br>
+                </div>
+
+                <div class="grid-items">
+                    <label for="year">Year<span aria-label="required">*</span></label><br>
+                    <input type="text" placeholder="Enter the current year">
+                </div>
+
+                <div class="grid-items">
+                    <label for="Week 1">First Week (In hours)<span aria-label="required">*</span></label><br>
+                    <input type="text" placeholder="Enter the First Week work hours">
+                </div>
+
+                <div class="grid-items">
+                    <label for="Week 2">Second Week (In hours)<span aria-label="required">*</span></label><br>
+                    <input type="text" placeholder="Enter the Second Week work hours">
+                </div>
+
+                <div class="grid-items">
+                    <label for="Week 3">Third Week (In hours)<span aria-label="required">*</span></label><br>
+                    <input type="text" placeholder="Enter the third Week work hours">
+                </div>
+
+                <div class="grid-items">
+                    <label for="Week 4">Fourth Week (In hours)<span aria-label="required">*</span></label><br>
+                    <input type="text" placeholder="Enter the Fourth Week work hours">
+                </div>
+            </div>
+
+            <div class="child" id="role">
+                <p>Resource Role</span></p> 
+                <div class="radio_container">          
+                    <label for="OffShore">
+                        <input type="radio" value="OffShore" id="OffShore" name="role" class="role">
+                        OffShore
+                    </label>
+
+                    <label for="OnShore">
+                        <input type="radio" value="OnShore" id="OnShore" name="role" class="role">
+                        OnShore
+                    </label>
+                </div>
+            </div>
+
+            <div id="btn">
+                <div class="child gridbtn" id="submit" >
+                    <button id="Register" type="submit">Submit</button>
+                </div>    
+                
+                <div class="child gridbtn" id="view">
+                    <button id="view" type="submit"><a href="./table.html">View Records</a></button>
+                </div> 
+            </div>
+        </div>
+    </form>
+</body>
+</html>
