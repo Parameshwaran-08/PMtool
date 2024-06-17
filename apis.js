@@ -44,15 +44,12 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   // <th>Actions</th>
 
   data.forEach((element) => {
-    const totalTimePerMonth = element.week1
-      ? Number(element.week1)
-      : 0 + element.week2
-      ? Number(element.week2)
-      : 0 + element.week3
-      ? Number(element.week3)
-      : 0 + element.week4
-      ? Number(element.week4)
-      : 0;
+    const totalTimePerMonth =
+      (element.week1 ? Number(element.week1) : 0) +
+      (element.week2 ? Number(element.week2) : 0) +
+      (element.week3 ? Number(element.week3) : 0) +
+      (element.week4 ? Number(element.week4) : 0);
+
     const table = document
       .getElementById("tab")
       .getElementsByTagName("tbody")[0];
@@ -62,13 +59,36 @@ document.addEventListener("DOMContentLoaded", async (event) => {
       element.sapId,
       element.resourceRole,
       element.month,
-      element.year,
-      "160 Euros",
       totalTimePerMonth,
+      "160 Euros",
       "dummy actions",
+      element.id,
     ].forEach((item, index) => {
       const cell = newRow.insertCell(index);
-      cell.innerHTML = item;
+      if (index === 6) {
+        const button1 = document.createElement("button");
+        button1.textContent = "Approve";
+        button1.addEventListener("click", () => {
+          console.log("Action 1 clicked for", element.title);
+        });
+
+        const button2 = document.createElement("button");
+        button2.textContent = "Update Request";
+        button2.addEventListener("click", () => {
+          console.log("Action 2 clicked for", element.title);
+        });
+        const button3 = document.createElement("button");
+        button3.textContent = "Delete";
+        button3.addEventListener("click", () => {
+          deleteListItem(element.id);
+        });
+
+        cell.appendChild(button1);
+        cell.appendChild(button2);
+        cell.appendChild(button3);
+      } else {
+        cell.innerHTML = item;
+      }
     });
   });
 });
@@ -81,11 +101,14 @@ const deleteListItem = async (id) => {
       headers: {
         Accept: "application/json;odata=verbose",
         "Content-Type": "application/json;odata=verbose",
-        Authorization: "update with real auth token",
+        Authorization:
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCIsImtpZCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvY3JtNTgxOTg1LnNoYXJlcG9pbnQuY29tQGE4MTk0MjdiLTg2ZDEtNDM2Ni05MjJiLTQxNTBmYjM4YWRiNCIsImlzcyI6IjAwMDAwMDAxLTAwMDAtMDAwMC1jMDAwLTAwMDAwMDAwMDAwMEBhODE5NDI3Yi04NmQxLTQzNjYtOTIyYi00MTUwZmIzOGFkYjQiLCJpYXQiOjE3MTg1OTc1MTMsIm5iZiI6MTcxODU5NzUxMywiZXhwIjoxNzE4Njg0MjEzLCJpZGVudGl0eXByb3ZpZGVyIjoiMDAwMDAwMDEtMDAwMC0wMDAwLWMwMDAtMDAwMDAwMDAwMDAwQGE4MTk0MjdiLTg2ZDEtNDM2Ni05MjJiLTQxNTBmYjM4YWRiNCIsIm5hbWVpZCI6ImNjNjFiZDcyLTE0MTMtNDIwNi1iODcxLTM0OWMyODk4NGRjNEBhODE5NDI3Yi04NmQxLTQzNjYtOTIyYi00MTUwZmIzOGFkYjQiLCJvaWQiOiI3OWRjYjlmYy00NWY2LTQxMWMtYWRmNS1jZWVlNTBjNTgzMjciLCJzdWIiOiI3OWRjYjlmYy00NWY2LTQxMWMtYWRmNS1jZWVlNTBjNTgzMjciLCJ0cnVzdGVkZm9yZGVsZWdhdGlvbiI6ImZhbHNlIn0.Bfif7E-NA6W4qFzZd9IAUlo1HL6OlPFHDS4uVhliukMZZJFa_ENESvEPFn3BMyDBPKv1TVBHS1Gf7yoEngvVAsmSy4JCErapWNsz_zNnT8EHOFAbZ-pkcKDeJG5SLThNY6P0XWIdXTWoSrlUz5Ginou0PJDCpvczOGwZeocP8VzONnklNr3md8cXzE5xdGk45g15kej92DR16pgXtlkK06ZhkHk159Jbmx6VDawsWHCdTqiJO2rPjn8tdbOODYM1MWyAORbKzQ7MvIHvuwZI47rglekmPVTAdwAlsoGG7_nw7t6wbJFAbZ0V6kxkF7-dPFCDHXlfV_B3l1Rcu2v1og",
         "If-Match": "*",
       },
     }
-  );
+  ).then((res) => {
+    window.location.href = window.location.href;
+  });
 };
 const updateListItem = async (id, body) => {
   const response = await fetch(
