@@ -8,50 +8,6 @@
     <title>Submit Form</title>
   </head>
   <body>
-    <form id="workHoursForm" onsubmit="submitForm(event)">
-      <label for="Title">Resource Name:</label>
-      <input type="text" id="Title" name="Title" required /><br /><br />
-
-      <label for="SapID">Resource Sap Id:</label>
-      <input type="text" id="SapID" name="SapID" required /><br /><br />
-
-      <label for="Eur/Hour">Eur/Hour:</label>
-      <input type="text" id="Eur/Hour" name="Eur/Hour" required /><br /><br />
-
-      <label for="resourceEmail">Resource Email:</label>
-      <input
-        type="email"
-        id="resourceEmail"
-        name="resourceEmail"
-        required
-      /><br /><br />
-
-      <label for="month">Month:</label>
-      <input type="text" id="month" name="month" required /><br /><br />
-
-      <label for="year">Year:</label>
-      <input type="number" id="year" name="year" required /><br /><br />
-
-      <label for="Week1">Week1 Work Hours:</label>
-      <input type="number" id="Week1" name="Week1" required /><br /><br />
-
-      <label for="Week2">Week2 Work Hours:</label>
-      <input type="number" id="Week2" name="Week2" required /><br /><br />
-
-      <label for="Week3">Week3 Work Hours:</label>
-      <input type="number" id="Week3" name="Week3" required /><br /><br />
-
-      <label for="Week4">Week4 Work Hours:</label>
-      <input type="number" id="Week4" name="Week4" required /><br /><br />
-
-      <label for="ResourceRole">Resource Role :</label>
-      <select id="ResourceRole" name="ResourceRole" required>
-        <option value="Onshore">OnShore</option>
-        <option value="OffShore">OffShore</option></select
-      ><br /><br />
-
-      <button type="submit">Submit</button>
-    </form>
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
         const initialValues = {
@@ -102,14 +58,14 @@
           ResourceRole: form.ResourceRole.value,
           Eur_x002f_Hour: form.EurHour.value,
         };
-
+        
         fetch(
           "https://crm581985.sharepoint.com/sites/ProjectManagerTool/_api/web/lists/getbytitle('effort_tracking')/items",
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: token,
+              Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCIsImtpZCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvY3JtNTgxOTg1LnNoYXJlcG9pbnQuY29tQGE4MTk0MjdiLTg2ZDEtNDM2Ni05MjJiLTQxNTBmYjM4YWRiNCIsImlzcyI6IjAwMDAwMDAxLTAwMDAtMDAwMC1jMDAwLTAwMDAwMDAwMDAwMEBhODE5NDI3Yi04NmQxLTQzNjYtOTIyYi00MTUwZmIzOGFkYjQiLCJpYXQiOjE3MTg1OTc1MTMsIm5iZiI6MTcxODU5NzUxMywiZXhwIjoxNzE4Njg0MjEzLCJpZGVudGl0eXByb3ZpZGVyIjoiMDAwMDAwMDEtMDAwMC0wMDAwLWMwMDAtMDAwMDAwMDAwMDAwQGE4MTk0MjdiLTg2ZDEtNDM2Ni05MjJiLTQxNTBmYjM4YWRiNCIsIm5hbWVpZCI6ImNjNjFiZDcyLTE0MTMtNDIwNi1iODcxLTM0OWMyODk4NGRjNEBhODE5NDI3Yi04NmQxLTQzNjYtOTIyYi00MTUwZmIzOGFkYjQiLCJvaWQiOiI3OWRjYjlmYy00NWY2LTQxMWMtYWRmNS1jZWVlNTBjNTgzMjciLCJzdWIiOiI3OWRjYjlmYy00NWY2LTQxMWMtYWRmNS1jZWVlNTBjNTgzMjciLCJ0cnVzdGVkZm9yZGVsZWdhdGlvbiI6ImZhbHNlIn0.Bfif7E-NA6W4qFzZd9IAUlo1HL6OlPFHDS4uVhliukMZZJFa_ENESvEPFn3BMyDBPKv1TVBHS1Gf7yoEngvVAsmSy4JCErapWNsz_zNnT8EHOFAbZ-pkcKDeJG5SLThNY6P0XWIdXTWoSrlUz5Ginou0PJDCpvczOGwZeocP8VzONnklNr3md8cXzE5xdGk45g15kej92DR16pgXtlkK06ZhkHk159Jbmx6VDawsWHCdTqiJO2rPjn8tdbOODYM1MWyAORbKzQ7MvIHvuwZI47rglekmPVTAdwAlsoGG7_nw7t6wbJFAbZ0V6kxkF7-dPFCDHXlfV_B3l1Rcu2v1og",
             },
             body: JSON.stringify(data),
           }
