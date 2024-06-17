@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="AppConstants.js"></script>
     <script src="apis.js"></script>
     <title>Submit Form</title>
 
@@ -63,8 +64,7 @@
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization:
-                "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCIsImtpZCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCJ9.eyJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvY3JtNTgxOTg1LnNoYXJlcG9pbnQuY29tQGE4MTk0MjdiLTg2ZDEtNDM2Ni05MjJiLTQxNTBmYjM4YWRiNCIsImlzcyI6IjAwMDAwMDAxLTAwMDAtMDAwMC1jMDAwLTAwMDAwMDAwMDAwMEBhODE5NDI3Yi04NmQxLTQzNjYtOTIyYi00MTUwZmIzOGFkYjQiLCJpYXQiOjE3MTg0OTY2NzMsIm5iZiI6MTcxODQ5NjY3MywiZXhwIjoxNzE4NTgzMzczLCJpZGVudGl0eXByb3ZpZGVyIjoiMDAwMDAwMDEtMDAwMC0wMDAwLWMwMDAtMDAwMDAwMDAwMDAwQGE4MTk0MjdiLTg2ZDEtNDM2Ni05MjJiLTQxNTBmYjM4YWRiNCIsIm5hbWVpZCI6ImNjNjFiZDcyLTE0MTMtNDIwNi1iODcxLTM0OWMyODk4NGRjNEBhODE5NDI3Yi04NmQxLTQzNjYtOTIyYi00MTUwZmIzOGFkYjQiLCJvaWQiOiI3OWRjYjlmYy00NWY2LTQxMWMtYWRmNS1jZWVlNTBjNTgzMjciLCJzdWIiOiI3OWRjYjlmYy00NWY2LTQxMWMtYWRmNS1jZWVlNTBjNTgzMjciLCJ0cnVzdGVkZm9yZGVsZWdhdGlvbiI6ImZhbHNlIn0.T1lx6K-I725p0J9QOdi2hoyMowqwryBShCQ07komj-tARj7l_SQzoIRwQd4oLbaPHpZWaiFbRzlKh5gccyhn2mcA6gh_V1q-fKZhofDCDChaajjUaMbCXeDeQd752eWjgHVrJAB9ll9z96wE7TucPYUsqwM6ZzMfB5lVEOpWdmodExEMOQ93iJYpOeP98OZE2iTmMU-hgvudoEBtQztoJaIc3oO296ZHxgXUKP3zk_-rRn1yp1-3VmRKBI43tmWmNvJ7BqljgK61wkNbhw8RM86hgOMxVxBhxuMHSrYMiCbXSMLHKUUwpwkDM5058pi0C3k9NTGZgZ7I_-rl6b7QCQ",
+              Authorization: token,
             },
             body: JSON.stringify(data),
           }
@@ -87,21 +87,18 @@
       <label for="SapID">Resource Sap Id:</label>
       <input type="text" id="SapID" name="SapID" required /><br /><br />
 
-      <<<<<<< HEAD
       <label for="EurHour">Resource Eur/Hour:</label>
       <input type="text" id="EurHour" name="EurHour" required /><br /><br />
-      =======
-      <label for="Eur/Hour">Resource Sap Id:</label>
-      <input type="text" id="Eur/Hour" name="Eur/Hour" required /><br /><br />
-      >>>>>>> upstream/main
 
       <label for="resourceEmail">Resource Email:</label>
-      <input type="email" <<<<<<< HEAD id="ResourceEmail" name="ResourceEmail"
-      ======= id="resourceEmail" name="resourceEmail" >>>>>>> upstream/main
-      required /><br /><br />
+      <input
+        type="email"
+        id="ResourceEmail"
+        name="ResourceEmail"
+        required
+      /><br /><br />
 
       <label for="month">Month:</label>
-      <<<<<<< HEAD
       <select id="month" name="month" required>
         <option value="">Select Month</option>
         <option value="January">January</option>
@@ -125,12 +122,6 @@
         <option value="2023">2023</option>
         <option value="2024">2024</option></select
       ><br /><br />
-      =======
-      <input type="text" id="month" name="month" required /><br /><br />
-
-      <label for="year">Year:</label>
-      <input type="number" id="year" name="year" required /><br /><br />
-      >>>>>>> upstream/main
 
       <label for="Week1">Week1 Work Hours:</label>
       <input type="number" id="Week1" name="Week1" required /><br /><br />
