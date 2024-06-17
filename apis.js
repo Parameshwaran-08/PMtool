@@ -15,6 +15,7 @@ const getListItems = async () => {
   const result = await response.json();
   const data = result.value.map((item) => {
     return {
+      title: item["Title"],
       sapId: item["SapID"],
       resourceEmail: item["ResourceEmail"],
       week1: item["Week1"],
@@ -33,14 +34,39 @@ const getListItems = async () => {
   return data;
 };
 
-document.addEventListener("DOMContentLoaded", (event) => {
-  console.log("karthik fire >>", event);
-  getListItems().then(function (response) {
-    console.log("response>>>>>>   ", response);
-    response.forEach((element) => {
-      document
-        .getElementById("table-body")
-        .appendChild("<tr>{element.ResourceEmail}</tr>");
+document.addEventListener("DOMContentLoaded", async (event) => {
+  const data = await getListItems();
+  // <th>Resource Name</th>
+  // <th>Resource SAP ID</th>
+  // <th>EUR/Hour</th>
+  // <th>Budget Hours</th>
+  // <th>Actual Hours</th>
+  // <th>Actions</th>
+
+  data.forEach((element) => {
+    const totalTimePerMonth = element.week1
+    ? Number(element.week1)
+    : 0 + element.week2
+    ? Number(element.week2)
+    : 0 + element.week3
+    ? Number(element.week3)
+    : 0 + element.week4
+    ? Number(element.week4)
+    : 0;
+    const table = document
+      .getElementById("tab")
+      .getElementsByTagName("tbody")[0];
+    const newRow = table.insertRow();
+    [
+      element.title,
+      element.sapId,
+      element.eurPerHour,
+      "160 Euro",
+      totalTimePerMonth,
+      "dummy actions",
+    ].forEach((item, index) => {
+      const cell = newRow.insertCell(index);
+      cell.innerHTML = item;
     });
   });
 });
